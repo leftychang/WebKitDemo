@@ -17,7 +17,6 @@
 		9F7D5F1A28D840A300457741 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 9F7D5F1928D840A300457741 /* RxRelay */; };
 		9F7D5F1C28D840A300457741 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9F7D5F1B28D840A300457741 /* RxSwift */; };
 		9F7D5F1F28D840D400457741 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 9F7D5F1E28D840D400457741 /* RxGesture */; };
-		9F7D5F2228D8414D00457741 /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9F7D5F2128D8414D00457741 /* SwifterSwift */; };
 		9F7D5F2528D841A300457741 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 9F7D5F2428D841A300457741 /* GRDB */; };
 		9F7D5F2828D841B500457741 /* RxGRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 9F7D5F2728D841B500457741 /* RxGRDB */; };
 /* End PBXBuildFile section */
@@ -43,7 +42,6 @@
 				9F7D5F1F28D840D400457741 /* RxGesture in Frameworks */,
 				9F7D5F2528D841A300457741 /* GRDB in Frameworks */,
 				9F7D5F2828D841B500457741 /* RxGRDB in Frameworks */,
-				9F7D5F2228D8414D00457741 /* SwifterSwift in Frameworks */,
 				9F7D5F1828D840A300457741 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,7 +148,6 @@
 				9F7D5F1928D840A300457741 /* RxRelay */,
 				9F7D5F1B28D840A300457741 /* RxSwift */,
 				9F7D5F1E28D840D400457741 /* RxGesture */,
-				9F7D5F2128D8414D00457741 /* SwifterSwift */,
 				9F7D5F2428D841A300457741 /* GRDB */,
 				9F7D5F2728D841B500457741 /* RxGRDB */,
 			);
@@ -185,7 +182,6 @@
 			packageReferences = (
 				9F7D5F1628D840A300457741 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				9F7D5F1D28D840D400457741 /* XCRemoteSwiftPackageReference "RxGesture" */,
-				9F7D5F2028D8414D00457741 /* XCRemoteSwiftPackageReference "SwifterSwift" */,
 				9F7D5F2328D841A300457741 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
 				9F7D5F2628D841B500457741 /* XCRemoteSwiftPackageReference "RxGRDB" */,
 			);
@@ -367,7 +363,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GN84HYF587;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WebKitDemo/Info.plist;
+				INFOPLIST_FILE = WebKitDemo/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -396,7 +392,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GN84HYF587;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WebKitDemo/Info.plist;
+				INFOPLIST_FILE = WebKitDemo/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -456,14 +452,6 @@
 				minimumVersion = 4.0.4;
 			};
 		};
-		9F7D5F2028D8414D00457741 /* XCRemoteSwiftPackageReference "SwifterSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwifterSwift/SwifterSwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.3.0;
-			};
-		};
 		9F7D5F2328D841A300457741 /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/groue/GRDB.swift.git";
@@ -502,11 +490,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9F7D5F1D28D840D400457741 /* XCRemoteSwiftPackageReference "RxGesture" */;
 			productName = RxGesture;
-		};
-		9F7D5F2128D8414D00457741 /* SwifterSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9F7D5F2028D8414D00457741 /* XCRemoteSwiftPackageReference "SwifterSwift" */;
-			productName = SwifterSwift;
 		};
 		9F7D5F2428D841A300457741 /* GRDB */ = {
 			isa = XCSwiftPackageProductDependency;
