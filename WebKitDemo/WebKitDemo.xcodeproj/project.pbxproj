@@ -70,15 +70,63 @@
 		9F7D5F0128D70CCD00457741 /* WebKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				9F7D5F2928D849CF00457741 /* Source */,
+				9F7D5F2A28D849D400457741 /* Resource */,
+			);
+			path = WebKitDemo;
+			sourceTree = "<group>";
+		};
+		9F7D5F2928D849CF00457741 /* Source */ = {
+			isa = PBXGroup;
+			children = (
 				9F7D5F0228D70CCD00457741 /* AppDelegate.swift */,
 				9F7D5F0428D70CCD00457741 /* SceneDelegate.swift */,
-				9F7D5F0628D70CCD00457741 /* ViewController.swift */,
+				9F7D5F2C28D84A0600457741 /* Coordinator */,
+				9F7D5F2E28D84A2E00457741 /* Utility */,
+				9F7D5F2B28D849F500457741 /* ViewModel */,
+				9F7D5F2D28D84A0D00457741 /* ViewController */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		9F7D5F2A28D849D400457741 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
 				9F7D5F0828D70CCD00457741 /* Main.storyboard */,
 				9F7D5F0B28D70CCE00457741 /* Assets.xcassets */,
 				9F7D5F0D28D70CCE00457741 /* LaunchScreen.storyboard */,
 				9F7D5F1028D70CCE00457741 /* Info.plist */,
 			);
-			path = WebKitDemo;
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		9F7D5F2B28D849F500457741 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9F7D5F2C28D84A0600457741 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		9F7D5F2D28D84A0D00457741 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9F7D5F0628D70CCD00457741 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9F7D5F2E28D84A2E00457741 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
