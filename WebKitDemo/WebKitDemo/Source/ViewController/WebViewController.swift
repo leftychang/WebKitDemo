@@ -52,7 +52,7 @@ final class WebViewController: UIViewController {
         NSLayoutConstraint.activate([leading, trailing, top, bottom])
     }()
     
-    lazy var initialBindings: Void = {
+    private lazy var initialBindings: Void = {
         if let url = viewModel?.url {
             webView.load(URLRequest(url: url))
         }
