@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F5217E528DBAB60005F9326 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5217E428DBAB60005F9326 /* Coordinator.swift */; };
+		9F5217E728DBAB9F005F9326 /* RootViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5217E628DBAB9F005F9326 /* RootViewCoordinator.swift */; };
+		9F5217E928DBABD2005F9326 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5217E828DBABD2005F9326 /* AppCoordinator.swift */; };
 		9F5A9BA328D862E70030EF18 /* CustomTransitioningNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5A9BA228D862E70030EF18 /* CustomTransitioningNavigationController.swift */; };
 		9F5A9BA528D8692F0030EF18 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5A9BA428D8692F0030EF18 /* TransitionAnimator.swift */; };
 		9F5A9BA728D869870030EF18 /* TransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5A9BA628D869870030EF18 /* TransitionCoordinator.swift */; };
@@ -27,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F5217E428DBAB60005F9326 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		9F5217E628DBAB9F005F9326 /* RootViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewCoordinator.swift; sourceTree = "<group>"; };
+		9F5217E828DBABD2005F9326 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		9F5A9BA228D862E70030EF18 /* CustomTransitioningNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransitioningNavigationController.swift; sourceTree = "<group>"; };
 		9F5A9BA428D8692F0030EF18 /* TransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		9F5A9BA628D869870030EF18 /* TransitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionCoordinator.swift; sourceTree = "<group>"; };
@@ -118,6 +124,9 @@
 		9F7D5F2C28D84A0600457741 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				9F5217E428DBAB60005F9326 /* Coordinator.swift */,
+				9F5217E628DBAB9F005F9326 /* RootViewCoordinator.swift */,
+				9F5217E828DBABD2005F9326 /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -227,14 +236,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F5217E928DBABD2005F9326 /* AppCoordinator.swift in Sources */,
 				9F5A9BA328D862E70030EF18 /* CustomTransitioningNavigationController.swift in Sources */,
 				9F7D5F0728D70CCD00457741 /* ContainerViewController.swift in Sources */,
 				9F5A9BA528D8692F0030EF18 /* TransitionAnimator.swift in Sources */,
+				9F5217E728DBAB9F005F9326 /* RootViewCoordinator.swift in Sources */,
 				9F7D5F0328D70CCD00457741 /* AppDelegate.swift in Sources */,
 				9F7D5F0528D70CCD00457741 /* SceneDelegate.swift in Sources */,
 				9F5A9BA728D869870030EF18 /* TransitionCoordinator.swift in Sources */,
 				9F5A9BA928D874410030EF18 /* StartPageViewController.swift in Sources */,
 				9F5A9BAB28D8765C0030EF18 /* WebViewController.swift in Sources */,
+				9F5217E528DBAB60005F9326 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
