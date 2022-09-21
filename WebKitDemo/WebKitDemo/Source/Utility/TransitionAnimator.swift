@@ -41,11 +41,7 @@ final class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
         // We access containerView here which acts as the superview for the views involved in the transition. Depending if we present or dismiss view controller we either add destination view to our container or add it below source (fromView) view.
         let container = transitionContext.containerView
 
-        if presenting {
-            container.addSubview(toView)
-        } else {
-            container.insertSubview(toView, belowSubview: fromView)
-        }
+        container.insertSubview(toView, belowSubview: fromView)
         toView.isUserInteractionEnabled = false
 
         // Here we set an initial frame for our destination view which in my sample it is being a little bit to the left or right of source view — that will allow us to create smooth slide/move animation. Also, it is the place where “magic” happens — create any animation you want here. I have created fade animation for first half part of the whole animation and slide/move animation for the whole duration of it.
