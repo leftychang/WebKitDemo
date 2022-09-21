@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPp-Pc-GMq">
-                                <rect key="frame" x="0.0" y="761" width="390" height="49"/>
+                                <rect key="frame" x="0.0" y="766" width="390" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jHW-bI-UAF"/>
                                     <barButtonItem image="chevron.left" catalog="system" id="Iwi-9Q-A5X"/>
@@ -29,7 +29,7 @@
                                 </items>
                             </toolbar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPd-YR-JEA">
-                                <rect key="frame" x="0.0" y="47" width="390" height="714"/>
+                                <rect key="frame" x="0.0" y="47" width="390" height="719"/>
                                 <connections>
                                     <segue destination="WV4-iF-gB0" kind="embed" id="SeK-3u-Mi1"/>
                                 </connections>
@@ -57,11 +57,11 @@
             <objects>
                 <viewController id="bp0-hi-W37" customClass="StartPageViewController" customModule="WebKitDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d3v-Eb-xp1">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="714"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="719"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pm6-X5-q85" userLabel="Network Button">
-                                <rect key="frame" x="173" y="335" width="44" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pm6-X5-q85" userLabel="Navigation Button">
+                                <rect key="frame" x="173" y="337.66666666666669" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="QTZ-4Y-ACf"/>
                                     <constraint firstAttribute="height" constant="44" id="hlO-KQ-Qv9"/>
@@ -71,7 +71,7 @@
                                     <imageReference key="image" image="airplane" catalog="system" symbolScale="large"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Y10-7R-Xdm" kind="show" identifier="NavigateWebByClick" id="iGP-YC-1MU"/>
+                                    <action selector="startNavigation:" destination="bp0-hi-W37" eventType="touchUpInside" id="akx-H6-fAy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -83,9 +83,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JoX-5A-Ldb"/>
-                    <connections>
-                        <segue destination="Y10-7R-Xdm" kind="show" identifier="NavigateWebByForward" id="Nq9-yE-qPr"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9s-t3-71N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -96,16 +93,37 @@
             <objects>
                 <viewController storyboardIdentifier="WebView" id="Y10-7R-Xdm" customClass="WebViewController" customModule="WebKitDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1gq-uS-SRH">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="714"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZ0-EG-JPl" userLabel="Web View Container">
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="sOh-UU-COX">
+                                <rect key="frame" x="185" y="412" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="mtj-Bd-8yc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WZ0-EG-JPl" firstAttribute="leading" secondItem="1gq-uS-SRH" secondAttribute="leading" id="4Rw-5D-YxO"/>
+                            <constraint firstItem="sOh-UU-COX" firstAttribute="centerX" secondItem="1gq-uS-SRH" secondAttribute="centerX" id="FX4-qc-3an"/>
+                            <constraint firstItem="WZ0-EG-JPl" firstAttribute="top" secondItem="1gq-uS-SRH" secondAttribute="top" constant="47" id="IKD-EN-rJT"/>
+                            <constraint firstAttribute="bottom" secondItem="WZ0-EG-JPl" secondAttribute="bottom" constant="34" id="MBP-b6-1aF"/>
+                            <constraint firstItem="sOh-UU-COX" firstAttribute="centerY" secondItem="1gq-uS-SRH" secondAttribute="centerY" id="vXg-sV-mcu"/>
+                            <constraint firstAttribute="trailing" secondItem="WZ0-EG-JPl" secondAttribute="trailing" id="vZm-MC-UcN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bJi-YM-y16"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="sOh-UU-COX" id="TVh-0M-4Yq"/>
+                        <outlet property="webViewContainer" destination="WZ0-EG-JPl" id="hpj-vO-Qoz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6J-K4-ifm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2177" y="-16"/>
+            <point key="canvasLocation" x="2176.9230769230767" y="-16.350710900473931"/>
         </scene>
         <!--Custom Transitioning Navigation Controller-->
         <scene sceneID="hEE-le-idW">
@@ -127,9 +145,6 @@
             <point key="canvasLocation" x="745" y="-15"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Nq9-yE-qPr"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="airplane" catalog="system" width="128" height="115"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
