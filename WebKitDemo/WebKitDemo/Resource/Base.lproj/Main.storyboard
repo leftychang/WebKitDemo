@@ -28,9 +28,17 @@
                                 <rect key="frame" x="0.0" y="761" width="390" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jHW-bI-UAF"/>
-                                    <barButtonItem image="chevron.left" catalog="system" id="Iwi-9Q-A5X"/>
+                                    <barButtonItem image="chevron.left" catalog="system" id="Iwi-9Q-A5X">
+                                        <connections>
+                                            <action selector="backwardMove:" destination="BYZ-38-t0r" id="IIO-2C-B6N"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="nDO-Jp-TsI"/>
-                                    <barButtonItem image="chevron.right" catalog="system" id="O8q-iw-zaR"/>
+                                    <barButtonItem image="chevron.right" catalog="system" id="O8q-iw-zaR">
+                                        <connections>
+                                            <action selector="forwardMove:" destination="BYZ-38-t0r" id="fks-GR-5Wl"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="MXf-wM-HIg"/>
                                 </items>
                             </toolbar>
@@ -47,6 +55,10 @@
                             <constraint firstItem="dPp-Pc-GMq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vqa-mD-qDV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backwardBarButtonItem" destination="Iwi-9Q-A5X" id="oU1-a4-RWD"/>
+                        <outlet property="forwardBarButtonItem" destination="O8q-iw-zaR" id="0a0-Gd-v6c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,11 +69,11 @@
             <objects>
                 <viewController id="bp0-hi-W37" customClass="StartPageViewController" customModule="WebKitDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d3v-Eb-xp1">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="810"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pm6-X5-q85" userLabel="Navigation Button">
-                                <rect key="frame" x="173" y="400" width="44" height="44"/>
+                                <rect key="frame" x="173" y="383" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="QTZ-4Y-ACf"/>
                                     <constraint firstAttribute="height" constant="44" id="hlO-KQ-Qv9"/>
@@ -123,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6J-K4-ifm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2176.9230769230767" y="-16.350710900473931"/>
+            <point key="canvasLocation" x="2151" y="-2"/>
         </scene>
         <!--Custom Transitioning Navigation Controller-->
         <scene sceneID="hEE-le-idW">
