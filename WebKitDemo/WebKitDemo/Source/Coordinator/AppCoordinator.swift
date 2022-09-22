@@ -44,10 +44,12 @@ final class AppCoordinator: RootViewCoordinator {
                     if let webViewController = showEvent.viewController as? WebViewController {
                         self?.canGoBackRelay.accept(true)
                         self?.canGoForwardRelay.accept(webViewController.webView.canGoForward)
+                        StoredValue.shared.navigationPage = .webPage
                     }
                     else if showEvent.viewController is StartPageViewController {
                         self?.canGoBackRelay.accept(false)
                         self?.canGoForwardRelay.accept(self?.webViewController != nil)
+                        StoredValue.shared.navigationPage = .startPage
                     }
                 })
         }
@@ -70,13 +72,16 @@ final class AppCoordinator: RootViewCoordinator {
         _ = containerViewController?.initialBindings
         
         // restore web view and do webViewBindings if needed
-        // TODO: restore current session
+        // restore current session
         StoredValue.shared.loadHistory { [weak self] result in
             switch result {
             case let .success(history):
                 if history.count > 1 {
                     DispatchQueue.main.async {
-                        _ = self?.fetchWebViewController(with: history[1].data)
+                        if let webViewController = self?.fetchWebViewController(with: history[1].data),
+                           case .webPage = StoredValue.shared.navigationPage {
+                            self?.containerViewController?.navController?.pushViewController(webViewController, animated: false)
+                        }
                     }
                 }
             case let .failure(error):

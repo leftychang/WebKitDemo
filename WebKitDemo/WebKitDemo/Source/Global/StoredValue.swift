@@ -18,7 +18,29 @@ enum StoredValueError: Error {
 final class StoredValue {
     static let shared = StoredValue()
     
+    // MARK: - Definitions
+    enum Keys: String {
+        case navigationPage = "NavigationPage"
+    }
+    
     // MARK: - Properties
+    var navigationPage: NavigationPage {
+        get {
+            if let data = UserDefaults.standard.data(forKey: Keys.navigationPage.rawValue),
+               let page = try? JSONDecoder().decode(NavigationPage.self, from: data) {
+                return page
+            }
+            else {
+                return .startPage
+            }
+        }
+        set {
+            if let data = try? JSONEncoder().encode(newValue) {
+                UserDefaults.standard.set(data, forKey: Keys.navigationPage.rawValue)
+            }
+        }
+    }
+    
     private var dbPath: URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!.appendingPathComponent("webkitdemo.sqlite")
     }
@@ -46,6 +68,13 @@ final class StoredValue {
     }
     
     private var _dbQueue: DatabaseQueue?
+    
+    // MARK: - Initializer
+    init() {
+        if let data = try? JSONEncoder().encode(NavigationPage.startPage) {
+            UserDefaults.standard.register(defaults: [Keys.navigationPage.rawValue: data])
+        }
+    }
     
     // MARK: - Methods
     func saveHistory(_ history: [/*Navigation*/History], completion: @escaping (Result<Void, Error>) -> Void) {
