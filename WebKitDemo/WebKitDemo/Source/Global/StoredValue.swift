@@ -77,10 +77,10 @@ final class StoredValue {
     }
     
     // MARK: - Methods
-    func saveHistory(_ history: [/*Navigation*/History], completion: @escaping (Result<Void, Error>) -> Void) {
+    func saveHistory(_ history: [History], completion: @escaping (Result<Void, Error>) -> Void) {
         if let dbQueue = dbQueue {
             dbQueue.asyncWrite({ db -> Void in
-                let request = /*Navigation*/History.all()
+                let request = History.all()
                 do {
                     let changeCount = try request.deleteAll(db)
                     print(changeCount)
@@ -101,13 +101,13 @@ final class StoredValue {
         }
     }
     
-    func loadHistory(completion: @escaping (Result<[/*Navigation*/History], Error>) -> Void) {
+    func loadHistory(completion: @escaping (Result<[History], Error>) -> Void) {
         if let dbQueue = dbQueue {
             dbQueue.asyncRead { (dbResult: Result<Database, Error>) in
                 do {
                     // Maybe read access could not be established
                     let db = try dbResult.get()
-                    let request = /*Navigation*/History.all().order(/*Navigation*/History.CodingKeys.id.asc)
+                    let request = History.all().order(History.CodingKeys.id.asc)
                     let history = try request.fetchAll(db)
                     completion(.success(history))
                 }
@@ -123,10 +123,10 @@ final class StoredValue {
     
     // Rx Observables, which do not access the database until they are subscribed. They complete on the main dispatch queue by default. (unless you provide a specific scheduler to the observeOn argument.)
     // You can ignore its value and turn it into a Completable with the asCompletable operator.
-    func saveHistory(_ history: [/*Navigation*/History]) -> Single<Int>? {
+    func saveHistory(_ history: [History]) -> Single<Int>? {
         if let dbQueue = dbQueue {
             let newHistoryCountObservable = dbQueue.rx.write { db -> Int in
-                let request = /*Navigation*/History.all()
+                let request = History.all()
                 do {
                     let changeCount = try request.deleteAll(db)
                     print(changeCount)
@@ -145,10 +145,10 @@ final class StoredValue {
         return nil
     }
     
-    func loadHistory() -> Single<[/*Navigation*/History]>? {
+    func loadHistory() -> Single<[History]>? {
         if let dbQueue = dbQueue {
-            let historyObservable = dbQueue.rx.read { db -> [/*Navigation*/History] in
-                let request = /*Navigation*/History.all().order(/*Navigation*/History.CodingKeys.id.asc)
+            let historyObservable = dbQueue.rx.read { db -> [History] in
+                let request = History.all().order(History.CodingKeys.id.asc)
                 let history = try request.fetchAll(db)
                 return history
             }
