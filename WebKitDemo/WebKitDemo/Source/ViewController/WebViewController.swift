@@ -7,9 +7,11 @@
 
 import UIKit
 import WebKit
+import Combine
 
 protocol WebViewCoordinatable: AnyObject {
     func webViewController(_ viewController: WebViewController, didRequestOpenURLInDefaultBrowser url: URL)
+    func webViewController(_ viewController: WebViewController, didChangeURL url: URL?)
 }
 
 final class WebViewController: UIViewController {
@@ -20,7 +22,9 @@ final class WebViewController: UIViewController {
     @IBOutlet private var webViewContainer: UIView!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     
-    private lazy var webView: WKWebView = {
+    private var cancellables: Set<AnyCancellable> = []
+    
+    lazy var webView: WKWebView = {
         let webConfiguration = WKWebViewConfiguration()
         let contentController = WKUserContentController()
         let preferences = WKPreferences()
@@ -53,9 +57,19 @@ final class WebViewController: UIViewController {
     }()
     
     private lazy var initialBindings: Void = {
-        if let url = viewModel?.url {
+        if let history = viewModel?.history {
+            updateHistory(history)
+        }
+        else if let url = viewModel?.url {
             webView.load(URLRequest(url: url))
         }
+        
+        webView.publisher(for: \.url, options: [.initial])
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] url in
+                self.coordinator?.webViewController(self, didChangeURL: url)
+            }
+            .store(in: &cancellables)
     }()
     
     // MARK: - View Life Cycle
@@ -91,21 +105,35 @@ extension WebViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        activityIndicator.startAnimating()
-        activityIndicator.isHidden = false
+        activityIndicator?.startAnimating()
+        activityIndicator?.isHidden = false
     }
                 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        activityIndicator.stopAnimating()
-        activityIndicator.isHidden = true
+        activityIndicator?.stopAnimating()
+        activityIndicator?.isHidden = true
         if let url = webView.url {
             viewModel?.didNavigate(to: url, webView: webView)
         }
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        activityIndicator.stopAnimating()
-        activityIndicator.isHidden = true
+        activityIndicator?.stopAnimating()
+        activityIndicator?.isHidden = true
+    }
+}
+
+// MARK: - WebViewModelDelegate
+extension WebViewController: WebViewModelDelegate {
+    func updateHistory(_ data: Data) {
+        // REF: https://stackoverflow.com/questions/73305403/wkwebview-history-serialization-on-ios
+        if #available(iOS 15.0, *) {
+            webView.interactionState = data
+        }
+        // NOTE: private API, may be rejected from Apple
+        else if webView.responds(to: NSSelectorFromString("_restoreFromSessionStateData:")) {
+            webView.perform(NSSelectorFromString("_restoreFromSessionStateData:"), with: data)
+        }
     }
 }
 

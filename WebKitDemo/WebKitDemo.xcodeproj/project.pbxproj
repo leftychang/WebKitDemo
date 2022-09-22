@@ -11,6 +11,9 @@
 		9F5217E728DBAB9F005F9326 /* RootViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5217E628DBAB9F005F9326 /* RootViewCoordinator.swift */; };
 		9F5217E928DBABD2005F9326 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5217E828DBABD2005F9326 /* AppCoordinator.swift */; };
 		9F5217EB28DBB208005F9326 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5217EA28DBB208005F9326 /* WebViewModel.swift */; };
+		9F5217EE28DBC572005F9326 /* StoredValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5217ED28DBC572005F9326 /* StoredValue.swift */; };
+		9F5217F128DBC765005F9326 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5217F028DBC765005F9326 /* History.swift */; };
+		9F5217F328DBCAAD005F9326 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5217F228DBCAAD005F9326 /* Constant.swift */; };
 		9F5A9BA328D862E70030EF18 /* CustomTransitioningNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5A9BA228D862E70030EF18 /* CustomTransitioningNavigationController.swift */; };
 		9F5A9BA528D8692F0030EF18 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5A9BA428D8692F0030EF18 /* TransitionAnimator.swift */; };
 		9F5A9BA728D869870030EF18 /* TransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5A9BA628D869870030EF18 /* TransitionCoordinator.swift */; };
@@ -35,6 +38,9 @@
 		9F5217E628DBAB9F005F9326 /* RootViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewCoordinator.swift; sourceTree = "<group>"; };
 		9F5217E828DBABD2005F9326 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		9F5217EA28DBB208005F9326 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
+		9F5217ED28DBC572005F9326 /* StoredValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredValue.swift; sourceTree = "<group>"; };
+		9F5217F028DBC765005F9326 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		9F5217F228DBCAAD005F9326 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		9F5A9BA228D862E70030EF18 /* CustomTransitioningNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransitioningNavigationController.swift; sourceTree = "<group>"; };
 		9F5A9BA428D8692F0030EF18 /* TransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		9F5A9BA628D869870030EF18 /* TransitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionCoordinator.swift; sourceTree = "<group>"; };
@@ -67,6 +73,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F5217EC28DBC551005F9326 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				9F5217F228DBCAAD005F9326 /* Constant.swift */,
+				9F5217ED28DBC572005F9326 /* StoredValue.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		9F5217EF28DBC66D005F9326 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9F5217F028DBC765005F9326 /* History.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9F7D5EF628D70CCD00457741 = {
 			isa = PBXGroup;
 			children = (
@@ -98,7 +121,9 @@
 				9F7D5F0228D70CCD00457741 /* AppDelegate.swift */,
 				9F7D5F0428D70CCD00457741 /* SceneDelegate.swift */,
 				9F7D5F2C28D84A0600457741 /* Coordinator */,
+				9F5217EC28DBC551005F9326 /* Global */,
 				9F7D5F2E28D84A2E00457741 /* Utility */,
+				9F5217EF28DBC66D005F9326 /* Model */,
 				9F7D5F2B28D849F500457741 /* ViewModel */,
 				9F7D5F2D28D84A0D00457741 /* ViewController */,
 			);
@@ -241,10 +266,13 @@
 			files = (
 				9F5217E928DBABD2005F9326 /* AppCoordinator.swift in Sources */,
 				9F5A9BA328D862E70030EF18 /* CustomTransitioningNavigationController.swift in Sources */,
+				9F5217F328DBCAAD005F9326 /* Constant.swift in Sources */,
 				9F7D5F0728D70CCD00457741 /* ContainerViewController.swift in Sources */,
 				9F5A9BA528D8692F0030EF18 /* TransitionAnimator.swift in Sources */,
+				9F5217F128DBC765005F9326 /* History.swift in Sources */,
 				9F5217E728DBAB9F005F9326 /* RootViewCoordinator.swift in Sources */,
 				9F7D5F0328D70CCD00457741 /* AppDelegate.swift in Sources */,
+				9F5217EE28DBC572005F9326 /* StoredValue.swift in Sources */,
 				9F7D5F0528D70CCD00457741 /* SceneDelegate.swift in Sources */,
 				9F5217EB28DBB208005F9326 /* WebViewModel.swift in Sources */,
 				9F5A9BA728D869870030EF18 /* TransitionCoordinator.swift in Sources */,
