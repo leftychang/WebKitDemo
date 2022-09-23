@@ -34,7 +34,7 @@ This README would document how different requirements were tackled.
 API to directly assign it to web views. We can only load url request one by one. Futhermore, we cannot load all url requests immediately. We must wait for a few seconds to make sure it is recorded into backForwardList.
 1. For the above reasons, we should have some other tricks to restore backForwardList. One is [Mozilla's solution](https://stackoverflow.com/a/31538352), loading a special html page from a local web server (running on localhost) that modifies the push state of the page and pushes previously visited URLs on the history stack. It is complicated.
 1. For iOS 15, WKWebView has a property `interactionState` which can be used to save and restore current session. Nice.
-1. How about iOS 13 and 14? There're [private APIs] (https://github.com/WebKit/webkit/blob/main/Source/WebKit/UIProcess/API/Cocoa/WKWebView.mm) `\_sessionStateData` and `\_restoreFromSessionStateData:`, which means it will be rejected by Apple. Also there's a comment saying that using the legacy session state encoder should be fixed. 
+1. How about iOS 13 and 14? There're [private APIs](https://github.com/WebKit/webkit/blob/main/Source/WebKit/UIProcess/API/Cocoa/WKWebView.mm) `_sessionStateData` and `_restoreFromSessionStateData:`, which means it will be rejected by Apple. Also there's a comment saying that using the legacy session state encoder should be fixed. 
 1. I still don't have a good answer, so I temporarily use private APIs to achieve the goal. It works.
 
 ## Zoom
@@ -45,7 +45,7 @@ API to directly assign it to web views. We can only load url request one by one.
 1. [WKWebViewConfiguration's ignoresViewportScaleLimits property](https://webkit.org/blog/7367/new-interaction-behaviors-in-ios-10/) seems good, but not for all situations.
 1. Finally I found [adding event listeners](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/HandlingEvents/HandlingEvents.html) `gesturestart`, `gesturechange`, `gestureend` works. After some trial and error, I found handling `gesturestart` and setting zoom scale for scroll view behave like Safari the most.
 
-* That's all. Any feedback is welcome.
+#### That's all. Any feedback is welcome.
 
 
 
