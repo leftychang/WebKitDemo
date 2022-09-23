@@ -8,5 +8,7 @@
 import Foundation
 
 enum Setting {
-    static let homePageURL = URL(string: "https://www.google.com") // change to http:// to test ATS
+    static let homePageURL = URL(string: "https://stil.kurir.rs/moda/157971/ovo-su-najstilizovanije-zene-sveta-koja-je-po-vama-br-1-anketa")
+    //https://github1s.com/lynoapp/
+    //https://stil.kurir.rs/moda/157971/ovo-su-najstilizovanije-zene-sveta-koja-je-po-vama-br-1-anketa
 }

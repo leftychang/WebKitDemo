@@ -26,7 +26,9 @@ final class WebViewController: UIViewController {
     
     lazy var webView: WKWebView = {
         let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.ignoresViewportScaleLimits = true // affect https://github1s.com/lynoapp/
         let contentController = WKUserContentController()
+        addUserScript(to: contentController)
         let preferences = WKPreferences()
         preferences.javaScriptEnabled = true
         preferences.javaScriptCanOpenWindowsAutomatically = false
@@ -57,10 +59,10 @@ final class WebViewController: UIViewController {
     }()
     
     private lazy var initialBindings: Void = {
-        if let history = viewModel?.history {
+        /*if let history = viewModel?.history {
             updateHistory(history)
         }
-        else if let url = viewModel?.url {
+        else */if let url = viewModel?.url {
             webView.load(URLRequest(url: url))
         }
         
@@ -70,6 +72,13 @@ final class WebViewController: UIViewController {
                 self.coordinator?.webViewController(self, didChangeURL: url)
             }
             .store(in: &cancellables)
+        
+        if let gestureRecognizers = self.navigationController?.view.gestureRecognizers {
+            for gestureRecognizer in gestureRecognizers {
+                gestureRecognizer.shouldRequireFailure(of: webView.scrollView.panGestureRecognizer)
+//                webView.scrollView.panGestureRecognizer.shouldBeRequiredToFail(by: gestureRecognizer)
+            }
+        }
     }()
     
     // MARK: - View Life Cycle
@@ -83,6 +92,39 @@ final class WebViewController: UIViewController {
         super.viewWillAppear(animated)
         
         _ = initialBindings
+    }
+    
+    // MARK: - Methods
+    private func addUserScript(to contentController: WKUserContentController) {
+//        let js = "var meta = document.createElement('meta'); meta.name = 'viewport'; meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=10.0, user-scalable=yes'; var head = document.getElementsByTagName('head')[0]; head.appendChild(meta);"
+
+//        let cssString = "body { touch-action: auto; }";
+//        let javascriptString = "var style = document.createElement('style'); style.innerHTML = '%@'; document.head.appendChild(style)"
+//        let js = String(format: javascriptString, cssString)
+        
+        // NOTE: gesturestart is more like Safari than gesturechange
+        let js = "document.addEventListener('gesturestart', function(e){  window.webkit.messageHandlers.didStart.postMessage(e.scale); }, false);"
+        let script = WKUserScript(source: js, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+
+        contentController.addUserScript(script)
+        contentController.add(self, name: "didStart")
+    }
+}
+
+// MARK: - WKScriptMessageHandler
+extension WebViewController: WKScriptMessageHandler {
+    func userContentController(_ userContentController: WKUserContentController,
+                               didReceive message: WKScriptMessage) {
+        guard let scale = message.body as? Float else {
+            return
+        }
+        print("\(message.name), \(scale), \(webView.scrollView.minimumZoomScale), \(webView.scrollView.maximumZoomScale)")
+        if message.name == "didStart" {
+            if scale >= 0.8 && scale <= 1.2 { // for smooth effect
+                let zoomScale = CGFloat(scale) * webView.scrollView.zoomScale
+                webView.scrollView.setZoomScale(zoomScale, animated: true)
+            }
+        }
     }
 }
 
