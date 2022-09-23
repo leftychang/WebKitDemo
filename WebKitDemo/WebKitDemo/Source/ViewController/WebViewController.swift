@@ -59,10 +59,10 @@ final class WebViewController: UIViewController {
     }()
     
     private lazy var initialBindings: Void = {
-        /*if let history = viewModel?.history {
+        if let history = viewModel?.history {
             updateHistory(history)
         }
-        else */if let url = viewModel?.url {
+        else if let url = viewModel?.url {
             webView.load(URLRequest(url: url))
         }
         
@@ -76,7 +76,6 @@ final class WebViewController: UIViewController {
         if let gestureRecognizers = self.navigationController?.view.gestureRecognizers {
             for gestureRecognizer in gestureRecognizers {
                 gestureRecognizer.shouldRequireFailure(of: webView.scrollView.panGestureRecognizer)
-//                webView.scrollView.panGestureRecognizer.shouldBeRequiredToFail(by: gestureRecognizer)
             }
         }
     }()
